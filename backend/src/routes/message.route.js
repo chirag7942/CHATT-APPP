@@ -5,9 +5,13 @@ import { getMessages, getUsersForSidebar, sendMessage } from "../controllers/mes
 
 const router = express.Router();
 
+// Route to get all users for the sidebar
 router.get("/users", protectRoute, getUsersForSidebar);
-router.get("/:id", protectRoute, getMessages);
 
-router.post("/send/:id", protectRoute, sendMessage);
+// Get messages with a specific user (renamed route to avoid conflict)
+router.get("/chat/:id", protectRoute, getMessages);
+
+// Send message to a specific user (renamed route to avoid conflict)
+router.post("/chat/send/:id", protectRoute, sendMessage);
 
 export default router;

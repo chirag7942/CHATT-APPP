@@ -16,8 +16,9 @@ const ChatContainer = () => {
     subscribeToMessages,
     unsubscribeFromMessages,
   } = useChatStore();
+
   const { authUser } = useAuthStore();
-  const messageEndRef = useRef(null);
+  const messageEndRef = useRef(null);//this will make chatbox scrolled to bottom whenever a new msg comes.
 
   useEffect(() => {
     getMessages(selectedUser._id);
@@ -27,6 +28,7 @@ const ChatContainer = () => {
     return () => unsubscribeFromMessages();
   }, [selectedUser._id, getMessages, subscribeToMessages, unsubscribeFromMessages]);
 
+  
   useEffect(() => {
     if (messageEndRef.current && messages) {
       messageEndRef.current.scrollIntoView({ behavior: "smooth" });

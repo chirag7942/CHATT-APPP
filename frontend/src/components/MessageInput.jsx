@@ -4,13 +4,16 @@ import { Image, Send, X } from "lucide-react";
 import toast from "react-hot-toast";
 
 const MessageInput = () => {
+
   const [text, setText] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const fileInputRef = useRef(null);
   const { sendMessage } = useChatStore();
 
+  //it means if it is not an image file:-
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+
     if (!file.type.startsWith("image/")) {
       toast.error("Please select an image file");
       return;
@@ -30,6 +33,8 @@ const MessageInput = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
+
+     //it means if text is not written or imagepreview is not showing.
     if (!text.trim() && !imagePreview) return;
 
     try {
@@ -42,13 +47,18 @@ const MessageInput = () => {
       setText("");
       setImagePreview(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
-    } catch (error) {
+    } 
+    
+    catch (error) {
       console.error("Failed to send message:", error);
     }
   };
 
   return (
     <div className="p-4 w-full">
+
+    
+    {/* First, in input we're showing image preview. */}
       {imagePreview && (
         <div className="mb-3 flex items-center gap-2">
           <div className="relative">
@@ -57,6 +67,8 @@ const MessageInput = () => {
               alt="Preview"
               className="w-20 h-20 object-cover rounded-lg border border-zinc-700"
             />
+
+             {/* if we want to remove this image preview or want to select another image file:- */}
             <button
               onClick={removeImage}
               className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-base-300
@@ -85,6 +97,8 @@ const MessageInput = () => {
             ref={fileInputRef}
             onChange={handleImageChange}
           />
+
+          {/* here we're making this input hidden because it will not look good on ui but we slect image through iven below image icon. */}
 
           <button
             type="button"

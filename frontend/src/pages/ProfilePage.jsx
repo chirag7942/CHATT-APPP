@@ -7,12 +7,14 @@ const ProfilePage = () => {
   const [selectedImg, setSelectedImg] = useState(null);
 
   const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
+   const file = e.target.files[0];//it means first file will be picked if user selects multiple ones.
     if (!file) return;
 
-    const reader = new FileReader();
+    const reader = new FileReader();//FileReader is a built-in JavaScript object that lets us read file contents on the client side
 
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file);//here we're telling the FileReader to read the file we selected (file) and convert it into a Data URL means converting seleced image into base64 format.
+
+
 
     reader.onload = async () => {
       const base64Image = reader.result;
@@ -35,7 +37,7 @@ const ProfilePage = () => {
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
               <img
-                src={selectedImg || authUser.profilePic || "/avatar.png"}
+                src={selectedImg || authUser.profilePic || "/avatar.png"}//here we're saying if some image is selcted current then it will be displayed and if not selected that user's past profilepic will be dispalyed otherwise a default avatar will be dispalyed.
                 alt="Profile"
                 className="size-32 rounded-full object-cover border-4 "
               />

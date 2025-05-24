@@ -27,7 +27,7 @@ const SignUpPage = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();//it will make sure that page doesn't refreshes when someone submit form for signup.
 
     const success = validateForm();
 

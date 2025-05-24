@@ -24,6 +24,8 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+//we here named model's name as User but mongodb save it as a collection named "users"
+
 const User = mongoose.model("User", userSchema);
 
 export default User;

@@ -12,6 +12,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 h-16">
         <div className="flex items-center justify-between h-full">
+
+        {/** Left side of navbar */}
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-2.5 hover:opacity-80 transition-all">
               <div className="size-9 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -21,6 +23,7 @@ const Navbar = () => {
             </Link>
           </div>
 
+ {/** Right side of navbar */}
           <div className="flex items-center gap-2">
             <Link
               to={"/settings"}
@@ -33,6 +36,8 @@ const Navbar = () => {
               <span className="hidden sm:inline">Settings</span>
             </Link>
 
+
+{/* It means profile and logout button wil be only shown when user is authentictaed. */}
             {authUser && (
               <>
                 <Link to={"/profile"} className={`btn btn-sm gap-2`}>

@@ -22,6 +22,8 @@ const messageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+//here we didn't make image and text required true because it's not always required a user will send both of them.
+
 const Message = mongoose.model("Message", messageSchema);
 
 export default Message;
