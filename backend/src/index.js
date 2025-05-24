@@ -30,7 +30,7 @@ app.use(cookieParser());
 //CORS allows or restricts requests made from one domain (origin) to another. like here we are gving port no. of frontend in cors so that frontend code can make access to backened api server.
 app.use(
     cors({
-      origin: "http://localhost:5173",
+      origin: ['http://localhost:5173', 'https://chatt-appp.onrender.com'],
       credentials: true,
     })
   );
